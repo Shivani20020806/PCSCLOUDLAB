@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.*, com.dao.pojo.Demo" %>
 <%@ page import="java.text.SimpleDateFormat" %>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -170,10 +172,10 @@ String selectedCourse = (String) request.getAttribute("selectedCourse");
     <% if(selectedCourse != null){ %>
         <input type="hidden" name="course" value="<%=  selectedCourse %>">
     <%} %>
+    <label>For Date & Time:
+    <input type="datetime-local" name="scheduleDateTime" required />
+</label>
     
-    <label>for Date:
-        <input type="date" name="scheduleDate" required />
-    </label>
     <button type="submit">Schedule</button>
     <br><br>
 
@@ -191,7 +193,7 @@ String selectedCourse = (String) request.getAttribute("selectedCourse");
             <th>Course</th>
             <th>Date</th>
             <th>Schedule</th>
-           <th>Schedule Date</th>
+           <th>Schedule Date&Time</th>
             
         </tr>
         <%
@@ -219,8 +221,27 @@ String selectedCourse = (String) request.getAttribute("selectedCourse");
             <td><%= formattedDate %></td>
            
            <td><%= demo.getIsSchedule() == 1 ? "Yes" : "No" %></td>
-           <td><%= demo.getScheduleDate() %></td>
-            
+          <td>
+    <%
+    String scheduleDate = demo.getScheduleDate();
+    String formattedSchedule = "";
+
+    if (scheduleDate != null && !scheduleDate.isEmpty()) {
+        try {
+            java.text.SimpleDateFormat scheduleInputFormat = new java.text.SimpleDateFormat("yyyy-MM-dd & HH:mm");
+            java.text.SimpleDateFormat scheduleOutputFormat = new java.text.SimpleDateFormat("hh:mm a");
+            // e.g. 08:30 PM
+           
+
+            formattedSchedule = scheduleOutputFormat.format(scheduleInputFormat.parse(scheduleDate));
+        } catch (Exception e) {
+            formattedSchedule = scheduleDate; // fallback if parse fails
+        }
+    }
+%>
+<td><%= formattedSchedule %></td>
+    
+          
         </tr>
         <%
             }

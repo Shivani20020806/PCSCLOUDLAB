@@ -60,8 +60,8 @@
 	        @Override
 	        protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	            String course = req.getParameter("course");
-	            String scheduleDate = req.getParameter("scheduleDate");
-	            String[] selectedIds = req.getParameterValues("selectedIds");
+	           String scheduleDateTime = req.getParameter("scheduleDateTime"); // comes as "2025-08-29T15:30"
+ String[] selectedIds = req.getParameterValues("selectedIds");
 
 	            if (selectedIds == null || selectedIds.length == 0) {
 	            	resp.sendRedirect("unscheduledDemosServlet");
@@ -80,12 +80,15 @@
 	                for (String idStr : selectedIds) {
 	                    int demoId = Integer.parseInt(idStr);
 
+	                    
+	                 // Convert HTML datetime-local format ("2025-08-29T15:30") to SQL datetime ("2025-08-29 15:30")
+	                    scheduleDateTime = scheduleDateTime.replace("T", " ");
+
 	                    // 1️⃣ Update record
-	                    updateStmt.setString(1, scheduleDate);
+	                    updateStmt.setString(1, scheduleDateTime);
 	                    updateStmt.setInt(2, demoId);
 	                    updateStmt.addBatch();
-
-	                    // 2️⃣ Fetch user details
+// 2️⃣ Fetch user details
 	                    fetchStmt.setInt(1, demoId);
 	                    ResultSet rs = fetchStmt.executeQuery();
 	                    if (rs.next()) {
@@ -97,7 +100,7 @@
 
 	                        // 3️⃣ Send Email
 	                        try {
-	                            EmailUtil.sendScheduledEmail(demo.getEmail(), demo, scheduleDate);
+	                            EmailUtil.sendScheduledEmail(demo.getEmail(), demo, scheduleDateTime);
 	                        } catch (Exception e) {
 	                            e.printStackTrace();
 	                            System.out.println("Email failed for: " + demo.getEmail());
@@ -117,15 +120,5 @@
 	            }
 	        }
 	    
-
-//	        updateStmt.executeBatch();
-//
-//	        resp.sendRedirect("unscheduledDemosServlet");
-//
-//	    } catch (Exception e) {
-//	        e.printStackTrace();
-//	        resp.getWriter().println("Error scheduling demos.");
-//	    }
-	}
-
+	    }
 
