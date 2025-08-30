@@ -44,7 +44,7 @@ public class EmailUtil {
                 + "<p>We will schedule your class shortly and notify you with details.</p>"
                 + "<br><p>Best regards,<br>PCS GLOBAL Pvt Ltd</p>";
         sendMail(recipientEmail, subject, body);
-        return "Registration email sent successfully";
+        return " And registration email sent successfully In Your email";
     }
 
     // ✅ Second email: Scheduled email
