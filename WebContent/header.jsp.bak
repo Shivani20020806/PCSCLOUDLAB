@@ -36,12 +36,6 @@ if (demomessage != null || emailmessage != null || demomessageColor != null) {
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
-<!-- jQuery + Popper + Bootstrap JS just before </body> -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <style>
 /* Body and General Styles */
 body {
@@ -889,13 +883,15 @@ a {
 									</li>
 									<!-- 	<li class="nav-item"><a class="nav-link" href="events.jsp">Event</a>
 									</li> -->
-									<li class="nav-item dropdown"><!-- Bootstrap 4 -->
-										<a class="nav-link dropdown-toggle" href="event.jsp" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Event</a>
+									<li class="nav-item dropdown"><a
+										class="nav-link dropdown-toggle" href="event.jsp"
+										id="navbarDropdown" role="button" data-toggle="dropdown"
+										aria-haspopup="true" aria-expanded="false"> Event</a>
 										<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-										  <a class="dropdown-item" href="upcoming-events.jsp">Upcoming</a>
-										  <a class="dropdown-item" href="getOnGoingEventsServelt">Ongoing</a>
-										</div>
-										</li>
+											<a class="dropdown-item" href="upcoming-events.jsp">Upcomining</a>
+											<a class="dropdown-item" href="ongoing-events.jsp">OnGoing</a>
+
+										</div></li>
 									<li class="nav-item"><a class="nav-link"
 										href="our-team.jsp">Team</a></li>
 									<li class="nav-item"><a class="nav-link"

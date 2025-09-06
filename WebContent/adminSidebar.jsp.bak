@@ -15,7 +15,6 @@
 				class="fa-regular fa-clock"></i> Unscheduled Demos</a></li>
 		<li><a href="alldemosServlet"><i
 				class="fa-solid fa-folder-open"></i> All Demos</a></li>
-				<li><a href="onGoingEventsServelt">OnGoing event</a></li>
 		<li><a href="#" onclick="showLogoutModal(event)"> <i
 				class="fa-solid fa-right-from-bracket"></i> Logout
 		</a></li>
