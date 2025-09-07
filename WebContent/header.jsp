@@ -876,7 +876,7 @@ a {
 										aria-haspopup="true" aria-expanded="false"> Event</a>
 										<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 											<a class="dropdown-item" href="upcoming-events.jsp">Upcomining</a>
-											<a class="dropdown-item" href="ongoing-events.jsp">OnGoing</a>
+											<a class="dropdown-item" href="getOnGoingEventsServelt">OnGoing</a>
 
 										</div></li>
 									<li class="nav-item"><a class="nav-link"
