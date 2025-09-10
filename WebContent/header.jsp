@@ -668,13 +668,9 @@ a {
 								</div>
 							</div>
 						</div>
-
 					</div>
 
-
-
 					<!-- Sign IN and the Log IN and Profile Section Ends Here -->
-
 
 				</div>
 			</div>
@@ -707,7 +703,7 @@ a {
 
 									<!-- Courses Dropdown -->
 									<li class="nav-item dropdown"><a
-										class="nav-link dropdown-toggle" href="courses.jsp"
+										class="nav-link dropdown-toggle" href="all-courses.jsp"
 										id="navbarDropdown" role="button" data-toggle="dropdown"
 										aria-haspopup="true" aria-expanded="false"> Courses</a>
 
